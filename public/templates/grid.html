@@ -1,8 +1,8 @@
 <section class="grid">
     <section class="category" ng-repeat="category in categories track by $index">
         <h1>{{category.name}}</h1>
-        <button class="question-button" ng-repeat="value in values track by $index">
-            {{value}}
+        <button class="question-button" ng-repeat="value in values track by $index" ng-click="selectQuestion(category, value)">
+            {{value | currency}}
         </button>
     </section>
 </section>
