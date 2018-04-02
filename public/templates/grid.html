@@ -1,3 +1,8 @@
-<section class="categories">
-    <h2>Include works!</h2>
+<section class="grid">
+    <section class="category" ng-repeat="category in categories track by $index">
+        <h1>{{category.name}}</h1>
+        <button class="question-button" ng-repeat="value in values track by $index">
+            {{value}}
+        </button>
+    </section>
 </section>
