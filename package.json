@@ -16,5 +16,8 @@
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
     "surge": "^0.20.1"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
   }
 }
