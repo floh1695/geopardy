@@ -2,10 +2,14 @@
 /* global stampit */
 'use strict';
 
-const createStamp = stampit.default;
 
 const geopardyApp = angular.module('geopardyApp', []);
 
-geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http) => {
-  console.log('Hi');
+geopardyApp.factory('Stampit', () => {
+  const Stampit = stampit.default;
+  return Stampit;
+});
+
+geopardyApp.controller('geopardyController', ['$scope', '$http', 'Stampit', ($scope, $http, Stampit) => {
+  console.log(Stampit);
 }]);
