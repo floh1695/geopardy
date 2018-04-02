@@ -1,5 +1,11 @@
-const main = () => {
-  document.querySelector('h1').textContent += '?'
-}
+/* global angular */
+/* global stampit */
+'use strict';
 
-document.addEventListener('DOMContentLoaded', main)
+const createStamp = stampit.default;
+
+const geopardyApp = angular.module('geopardyApp', []);
+
+geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http) => {
+  console.log('Hi');
+}]);

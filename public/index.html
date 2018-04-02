@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
-  <head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Geopardy</title>
-    <link rel="stylesheet" href="./styles/screen.css">
-  </head>
-  <body>
-    <h1>Hello, World!</h1>
+<html class="html">
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/3.2.1/stampit.umd.min.js"></script>
-    <script src="./scripts/main.js" charset="utf-8"></script>
-  </body>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geopardy</title>
+  <link rel="stylesheet" href="./styles/screen.css">
+</head>
+
+<body class="body">
+  <header class="hero">
+    <h1 class="heading-title">Geopardy!</h1>
+  </header>
+
+  <section ng-app="geopardyApp" ng-controller="geopardyController" class="game-board">
+    <section ng-include="'./templates/grid.html'"></section>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/3.2.1/stampit.umd.min.js"></script>
+  <script src="./scripts/main.js" charset="utf-8"></script>
+</body>
+
 </html>
