@@ -3,19 +3,6 @@
 
 'use strict';
 
-const JService = (call, options = {}) => {
-  const handleOptions = (options) => {
-    const optionsArr = [];
-    for (let option in options) {
-      optionsArr.push([option, options[option]]);
-    }
-    return optionsArr
-      .map(optionPair => optionPair.join('='))
-      .join('&');
-  };
-  return `http://jservice.io/api/${call}?${handleOptions(options)}`;
-};
-
 /** Returns an array of unique category id's */
 const randomCategories = (count = 5) => {
   const randomCategoryId = () => {
