@@ -1,3 +1,7 @@
 {
-    "extends": "google"
+    "extends": "google",
+    "globals": {
+        "angular": true,
+        "stampit": true
+    }
 }

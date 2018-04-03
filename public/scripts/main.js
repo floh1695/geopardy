@@ -1,6 +1,3 @@
-/* global angular */
-/* global stampit */
-
 'use strict';
 
 /** Returns an array of unique category id's */
