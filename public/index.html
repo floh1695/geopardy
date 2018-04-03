@@ -2,29 +2,29 @@
 <html class="html">
 
 <head lang="en">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Geopardy</title>
-  <link rel="stylesheet" href="./styles/screen.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geopardy</title>
+    <link rel="stylesheet" href="./styles/screen.css">
 </head>
 
 <body class="body">
-  <header class="hero">
-    <h1 class="heading-title">Geopardy!</h1>
-  </header>
+    <header class="hero">
+        <h1 class="heading-title">Geopardy!</h1>
+    </header>
 
-  <section ng-app="geopardyApp" ng-controller="geopardyController" class="game-board">
-    <section ng-include="'./templates/grid.html'"></section>
-  </section>
+    <section ng-app="geopardyApp" ng-controller="geopardyController" class="game-board">
+        <section ng-include="'./templates/grid.html'"></section>
+    </section>
 
-  <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/3.2.1/stampit.umd.min.js"></script>
-  <script src="./scripts/globals.js"></script>
-  <script src="./scripts/jService.js"></script>
-  <script src="./scripts/stamps/category.js"></script>
-  <script src="./scripts/stamps/question.js"></script>
-  <script src="./scripts/main.js" charset="utf-8"></script>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/3.2.1/stampit.umd.min.js"></script>
+    <script src="./scripts/globals.js"></script>
+    <script src="./scripts/jService.js"></script>
+    <script src="./scripts/stamps/category.js"></script>
+    <script src="./scripts/stamps/question.js"></script>
+    <script src="./scripts/main.js" charset="utf-8"></script>
 </body>
 
 </html>

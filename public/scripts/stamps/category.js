@@ -20,6 +20,9 @@ const Category = Stampit({
         },
         apiCall() {
             return JService('category', { id: this.id });
+        },
+        setDirtyQuestions(questions) {
+            console.warn('Category({}).setDirtyQuestions(questions) not yet implemented');
         }
     }
 });
