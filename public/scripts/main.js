@@ -3,45 +3,6 @@
 
 'use strict';
 
-const Stampit = stampit.default;
-
-const Category = Stampit({
-  props: {
-    name: null,
-    id: null,
-    questions: {}
-  },
-  init({ name, id, questions = this.questions }) {
-    this.name = name;
-    this.id = id;
-    this.questions = questions;
-  },
-  methods: {
-    setQuestion(question) {
-      this.questions[question.value] = question;
-    },
-    getQuestion(value) {
-      return this.questions[value] === undefined ? null : this.questions[value];
-    },
-    apiCall() {
-      return JService('category', { id: this.id });
-    }
-  }
-});
-
-const Question = Stampit({
-  props: {
-    value: null,
-    text: null,
-    answer: null
-  },
-  init({ value, text, answer }) {
-    this.value = value;
-    this.text = text;
-    this.answer = answer;
-  }
-});
-
 const JService = (call, options = {}) => {
   const handleOptions = (options) => {
     const optionsArr = [];
