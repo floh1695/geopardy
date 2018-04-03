@@ -3,9 +3,6 @@
 /** Returns an array of unique category id's */
 const randomCategories = (count = 5) => {
     const randomCategoryId = () => {
-        const randomInteger = (lower, upper) => {
-            return lower + Math.floor(Math.random() * (upper - lower + 1));
-        }
         const maxCategoryId = 18418; // Magic number supplied by https://github.com/ctiller15
         return randomInteger(1, maxCategoryId);
     }
@@ -17,7 +14,7 @@ const randomCategories = (count = 5) => {
         }
     } while (arr.length < count);
     return arr;
-}
+};
 
 const geopardyApp = angular.module('geopardyApp', []);
 
@@ -32,7 +29,7 @@ geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http)
     /* Configuration */
     const CATEGORY_COUNT = 5;
 
-    $scope.values = [1, 2, 3, 4, 5].map(v => v * 200);
+    $scope.values = MONEY_VALUES;
     $scope.selectQuestion = (category, value) => {
         console.log(category.getQuestion(value));
     };
@@ -57,7 +54,6 @@ geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http)
         .then((data) => {
             category.name = data.title;
             category.setDirtyQuestions(data.clues);
-            console.log(data);
         });
         $scope.categories.push(category);
     }
