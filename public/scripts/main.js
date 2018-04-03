@@ -27,9 +27,8 @@ geopardyApp.filter('currency', () => {
 
 geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http) => {
     /* Configuration */
-    const CATEGORY_COUNT = 5;
-
     $scope.values = MONEY_VALUES;
+    $scope.hideGrid = false;
     $scope.selectQuestion = (category, value) => {
         console.log(category.getQuestion(value));
     };
@@ -39,21 +38,21 @@ geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http)
     const categoryIds = randomCategories(CATEGORY_COUNT);
     for (let i = 0; i < CATEGORY_COUNT; i++) {
         const category = Category({ name: i, id: categoryIds.pop() });
-        for (let value of $scope.values) {
-            const question = Question({ value, text: 'Test question', answer: 'Test answer' });
-            category.setQuestion(question);
-        }
         $http({
             method: 'GET',
             url: category.apiCall()
         })
         .then((response) => {
+            console.log(response);
             if (response.status === 200) { return response.data; }
             else { console.warn('API call failed', response); }
         })
         .then((data) => {
+            // console.log(data.clues);
             category.name = data.title;
             category.setDirtyQuestions(data.clues);
+            console.log(category);
+            // console.log($scope.categories);
         });
         $scope.categories.push(category);
     }
