@@ -1,7 +1,7 @@
 <section class="grid" ng-hide="hideGrid">
     <section class="category" ng-repeat="category in categories track by $index">
         <h1>{{category.name}}</h1>
-        <button class="question-button" ng-repeat="value in values track by $index" ng-click="selectQuestion(category, value)">
+        <button class="question-button" ng-repeat="value in values track by $index" ng-click="selectQuestion(category, value)" ng-hide="category.getQuestion(value).hide">
             {{value | currency}}
         </button>
     </section>

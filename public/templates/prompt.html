@@ -1,0 +1,5 @@
+<section class="prompt" ng-show="hideGrid">
+    <h1>The question is: {{activeQuestion.text}}</h1>
+    <input type="text" class="answer-input" ng-model="activeAnswer">
+    <button ng-click="submitButton($event, activeAnswer)">Submit</button>
+</section>

@@ -28,9 +28,20 @@ geopardyApp.filter('currency', () => {
 geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http) => {
     /* Configuration */
     $scope.values = MONEY_VALUES;
+    $scope.score = 0;
     $scope.hideGrid = false;
     $scope.selectQuestion = (category, value) => {
         console.log(category.getQuestion(value));
+        $scope.activeQuestion = category.getQuestion(value);
+        $scope.hideGrid = !$scope.hideGrid;
+    };
+    $scope.submitButton = (event, answer) => {
+        $scope.hideGrid = !$scope.hideGrid;
+        $scope.activeQuestion.hide = true;
+        // TODO: Better answer checking system
+        if (answer === $scope.activeQuestion.answer) {
+            $scope.score += $scope.activeQuestion.value;
+        }
     };
 
     /* Set up category data structures */

@@ -14,7 +14,9 @@
     </header>
 
     <section ng-app="geopardyApp" ng-controller="geopardyController" class="game-board">
+        <h1>{{score | currency}}</h1>
         <section ng-include="'./templates/grid.html'"></section>
+        <section ng-include="'./templates/prompt.html'"></section>
     </section>
 
     <!-- Scripts -->
