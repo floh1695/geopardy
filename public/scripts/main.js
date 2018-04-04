@@ -30,6 +30,32 @@ geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http)
     $scope.values = MONEY_VALUES;
     $scope.score = 0;
     $scope.hideGrid = false;
+
+    const newGame = () => {
+        $scope.score = 0;
+        $scope.categories = [];
+        const categoryIds = randomCategories(CATEGORY_COUNT);
+        for (let i = 0; i < CATEGORY_COUNT; i++) {
+            const category = Category({ name: i, id: categoryIds.pop() });
+            $http({
+                method: 'GET',
+                url: category.apiCall()
+            })
+                .then((response) => {
+                    console.log(response);
+                    if (response.status === 200) { return response.data; }
+                    else { console.warn('API call failed', response); }
+                })
+                .then((data) => {
+                    // console.log(data.clues);
+                    category.name = data.title;
+                    category.setDirtyQuestions(data.clues);
+                    console.log(category);
+                    // console.log($scope.categories);
+                });
+            $scope.categories.push(category);
+        }
+    };
     $scope.selectQuestion = (category, value) => {
         console.log(category.getQuestion(value));
         $scope.activeQuestion = category.getQuestion(value);
@@ -42,30 +68,18 @@ geopardyApp.controller('geopardyController', ['$scope', '$http', ($scope, $http)
         if (answer === $scope.activeQuestion.answer) {
             $scope.score += $scope.activeQuestion.value;
         }
+        const countActiveQuestions = (categories) => {
+            return categories
+                .map(category => category.questions)
+                .map(questions => {
+                    return Object.values(questions)
+                        .map(question => question.hide ? 0 : 1)
+                        .reduce((x, y) => x + y);
+                })
+                .reduce((x, y) => x + y);
+        }
+        if (!countActiveQuestions($scope.categories)) { newGame(); }
     };
 
-    /* Set up category data structures */
-    $scope.categories = [];
-    const categoryIds = randomCategories(CATEGORY_COUNT);
-    for (let i = 0; i < CATEGORY_COUNT; i++) {
-        const category = Category({ name: i, id: categoryIds.pop() });
-        $http({
-            method: 'GET',
-            url: category.apiCall()
-        })
-        .then((response) => {
-            console.log(response);
-            if (response.status === 200) { return response.data; }
-            else { console.warn('API call failed', response); }
-        })
-        .then((data) => {
-            // console.log(data.clues);
-            category.name = data.title;
-            category.setDirtyQuestions(data.clues);
-            console.log(category);
-            // console.log($scope.categories);
-        });
-        $scope.categories.push(category);
-    }
-
+    newGame();
 }]);
